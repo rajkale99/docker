@@ -5,6 +5,8 @@ free -h
 nproc
 cat /etc/os*
 env
+mkdir -p ~/.config/rclone
+echo "$rclone_config" > ~/.config/rclone/rclone.conf # Write rclone config found from env variable, so that cloud storage can be used to upload ccache
 
 url=https://mygdrive.projectlegionos.workers.dev/0:/ccache/legion-vanilla/ccache.tar.gz # Where cccahe is located, use your ones, from where you want to download ccache!
 
