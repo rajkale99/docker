@@ -22,10 +22,10 @@ ccache -z # Clear old stats, so monitor script will provide real ccache statisti
 
 
 # upload function for uploading rom zip file! I don't want unwanted builds in my google drive haha!
-uptsh(){
-	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
-	# 14 days, 10 GB limit
-}
+#uptsh(){
+#	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
+#	# 14 days, 10 GB limit
+#}
 
 # It's recommended to use google drive(rclone) as upload solution for coping with the time limit. Un-comment next 3 lines to upload with rclone in drive. Also change apon and junk according to your config name, uploading folder of drive
 up(){
@@ -39,10 +39,7 @@ make api-stubs-docs || echo no problem
 make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
-make legion -j8 \
-	&& send_zip=$(up out/target/product/miatoll/*zip) \
-	&& send_zip=$(uptsh out/target/product/miatoll/*zip) \
-	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && ccache -s
+make legion -j8 && send_zip=$(up out/target/product/miatoll/*zip) \
 
 size="$(du -h ${zip}|awk '{print $1}')"
 mdsum="$(md5sum ${zip}|awk '{print $1}')"
