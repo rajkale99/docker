@@ -22,7 +22,7 @@ ccache -z # Clear old stats, so monitor script will provide real ccache statisti
 
 
 # upload function for uploading rom zip file! I don't want unwanted builds in my google drive haha!
-up(){
+uptsh(){
 	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
 	# 14 days, 10 GB limit
 }
@@ -41,6 +41,7 @@ make test-api-stubs-docs || echo no problem
 
 make legion -j10 \
 	&& send_zip=$(up out/target/product/miatoll/*zip) \
+	&& send_zip=$(uptsh out/target/product/miatoll/*zip) \
 	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && ccache -s && sleep 2h
 
 size="$(du -h ${zip}|awk '{print $1}')"
