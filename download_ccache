@@ -16,4 +16,3 @@ time rclone copy drive:ccache/legion-vanilla/ccache.tar.gz /tmp/
 
 time tar xf ccache.tar.gz  # Extract ccache so ci can use it
 rm -rf ccache.tar.gz # Remove unnecessary downloaded file, it will speed up the upload ccache process
-ls
