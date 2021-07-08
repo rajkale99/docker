@@ -39,7 +39,7 @@ make api-stubs-docs || echo no problem
 make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
-make legion -j8 \
+make legion -j10 \
 	&& send_zip=$(up out/target/product/miatoll/*zip) \
 	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && ccache -s && sleep 2h
 
