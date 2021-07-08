@@ -7,11 +7,12 @@ env: # Environment variables to pass to all tasks
     rclone_config: "ENCRYPTED[1f68da86b8ae94f30f45521187a1bbaef54b214ed78aa96292c91e2f58684929937c26bd3dfdc5e2b1b7abf84735e349]"
     TOKEN: "ENCRYPTED[1c39061dc936a584438ef51a70663c191c68c2a6b006c2bde2261c3dc12b162e1c7b24408cf2ce37c9db503f2b2b0cb9]"
 
-  rom: "legion"
-  branch: "11"
-  build_type: "userdebug"
-  zip: "out/target/product/miatoll/*.zip"
-  gdrivedir: "Legion"
+    #variables
+    rom: "legion"
+    branch: "11"
+    build_type: "userdebug"
+    zip: "out/target/product/miatoll/LegionOS*.zip"
+    gdrivedir: "Legion"
 
 task:
     name: aosp # Project name
